@@ -1,0 +1,38 @@
+---
+# This is included in deploy.yml only if {{ librespot_binary_url }} is not defined
+
+- name: Download librespot archive
+  get_url:
+    url: "{{ librespot_archive_url }}"
+    dest: "{{ global_cache_dir }}/librespot-{{ librespot_version }}.tar.gz"
+  become: false
+  delegate_to: localhost
+
+- name: Clear unarchive target directory
+  file:
+    path: /tmp/librespot-{{ librespot_version }}
+    state: absent
+
+- name: Unpack librespot archive
+  unarchive:
+    src: "{{ global_cache_dir }}/librespot-{{ librespot_version }}.tar.gz"
+    dest: /tmp
+
+- name: Compile librespot
+  shell: cargo build --release --features pulseaudio-backend --no-default-features
+  args:
+    chdir: /tmp/librespot-{{ librespot_version }}
+  tags: librespot-compile
+
+- name: Create deployment target directory
+  file:
+    path: /opt/librespot-{{ librespot_version }}/bin
+    state: directory
+
+- name: Deploy librespot executable
+  copy:
+    remote_src: true
+    src: /tmp/librespot-{{ librespot_version }}/target/release/librespot
+    dest: /opt/librespot-{{ librespot_version }}/bin/librespot
+    mode: 0755
+  notify: Restart librespot service

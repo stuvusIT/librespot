@@ -1,0 +1,15 @@
+---
+- name: Install build dependencies
+  apt:
+    name:
+      - libpulse-dev
+      - cargo
+
+- name: Download precompiled binary for librespot
+  get_url:
+    url: "{{ librespot_binary_url }}"
+    dest: /opt/librespot-{{ librespot_version }}/bin/librespot
+  when: librespot_binary_url is defined
+
+- include_tasks: build.yml
+  when: librespot_binary_url is not defined

@@ -1,0 +1,14 @@
+---
+- include_tasks: install.yml
+
+- name: Create librespot audio cache directory
+  file:
+    path: "{{ librespot_cache_directory }}"
+    state: directory
+  when: librespot_enable_cache
+
+- name: Create librespot service
+  template:
+    src: librespot.service.j2
+    dest: /etc/systemd/system/librespot.service
+  notify: Restart librespot service

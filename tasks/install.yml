@@ -1,0 +1,15 @@
+---
+- name: Check if the desired librespot version exists
+  stat:
+    path: /opt/librespot-{{ librespot_version }}/bin/librespot
+  register: librespot_executable_stat
+
+- include_tasks: deploy.yml
+  when: not librespot_executable_stat.stat.exists
+
+- name: Install librespot
+  file:
+    path: /usr/local/bin/librespot
+    state: link
+    src: /opt/librespot-{{ librespot_version }}/bin/librespot
+  notify: Restart librespot service

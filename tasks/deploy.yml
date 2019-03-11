@@ -4,6 +4,7 @@
     url: "{{ librespot_binary_url }}"
     dest: /opt/librespot-{{ librespot_version }}/bin/librespot
     checksum: "{{ librespot_binary_checksum }}"
+    mode: 0755
   when: librespot_binary_url is defined
 
 - include_tasks: build.yml

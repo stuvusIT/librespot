@@ -29,7 +29,6 @@
   shell: cargo build --release --features pulseaudio-backend --no-default-features
   args:
     chdir: /tmp/librespot-{{ librespot_version }}
-  tags: librespot-compile
 
 - name: Create deployment target directory
   file:

@@ -11,6 +11,7 @@
   get_url:
     url: "{{ librespot_archive_url }}"
     dest: "{{ global_cache_dir }}/librespot-{{ librespot_version }}.tar.gz"
+    checksum: "{{ librespot_archive_checksum }}"
   become: false
   delegate_to: localhost
 

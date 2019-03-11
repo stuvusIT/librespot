@@ -1,6 +1,12 @@
 ---
 # This is included in deploy.yml only if {{ librespot_binary_url }} is not defined
 
+- name: Install build dependencies
+  apt:
+    name:
+      - libpulse-dev
+      - cargo
+
 - name: Download librespot archive
   get_url:
     url: "{{ librespot_archive_url }}"

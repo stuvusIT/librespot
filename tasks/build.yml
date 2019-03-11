@@ -5,7 +5,9 @@
   apt:
     name:
       - libpulse-dev
-      - cargo
+
+- name: Install toolchain
+  shell: curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 - name: Download librespot archive
   get_url:
@@ -26,7 +28,7 @@
     dest: /tmp
 
 - name: Compile librespot
-  shell: cargo build --release --features pulseaudio-backend --no-default-features
+  shell: $HOME/.cargo/bin/cargo build --release --features pulseaudio-backend --no-default-features
   args:
     chdir: /tmp/librespot-{{ librespot_version }}
 

@@ -6,6 +6,7 @@ After=network.target sound.target
 [Service]
 Restart=always
 RestartSec=10
+User={{ librespot_user }}
 ExecStart=/usr/local/bin/librespot
 {%- if librespot_enable_cache %}
  --cache "{{ librespot_cache_directory }}"

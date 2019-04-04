@@ -1,7 +1,9 @@
 ---
 librespot_github_repo: librespot-org/librespot
-librespot_checksum: sha256:310aca7f8303d12d11d4854922a0bd8f884f445f806c11c50aa1e1c9eb1bda46
-librespot_version: daeeeaa122fc2d71edf11e562e23038db4210b39
+librespot_checksum: sha256:c7217f4e17a4c81eb33b8d334d7cfaa44712a71acff2024b104f65afc1ca0f16
+librespot_version: 14721f45fe7e3e5427abdfdedca6ed1ec8948d80
+
+librespot_user: librespot
 
 librespot_enable_cache: False
 librespot_cache_directory: /var/cache/librespot

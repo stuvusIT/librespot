@@ -27,7 +27,7 @@ variable accordingly, and then reapply this role.
 
 ## Role Variables Configuring Flags and Options
 
-The following role variables
+The following role variables configure
 [librespot flags or options, documented here](https://github.com/librespot-org/librespot/wiki/Options).
 
 | Name                                  | Default              | Description                                                 |

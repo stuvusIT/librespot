@@ -32,6 +32,7 @@ The following role variables configure
 
 | Name                                  | Default              | Description                                                 |
 | :------------------------------------ | :------------------- | :---------------------------------------------------------- |
+| global_cache_dir                      | _undefined_          | **[Must be set]** Local directory to store temporary files  |
 | librespot_enable_cache                | False                | Whether to pass `--cache "{{ librespot_cache_directory }}"` |
 | librespot_verbose                     | False                | Whether to pass `--verbose`                                 |
 | librespot_enable_volume_normalisation | True                 | Whether to pass `--enable-volume-normalisation`             |

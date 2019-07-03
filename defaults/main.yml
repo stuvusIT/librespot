@@ -1,0 +1,18 @@
+---
+librespot_github_repo: librespot-org/librespot
+librespot_checksum: sha256:584e3009a0ff34ba9393d402caa5a35863f73fabf2a21ac43f3ed7fb4be70e23
+librespot_version: 4e3576ba7c6146cf68e1953daeec929d619b26b1
+
+librespot_user: librespot
+
+librespot_enable_cache: False
+librespot_cache_directory: /var/cache/librespot
+librespot_name: librespot
+librespot_bitrate: 160
+librespot_verbose: False
+librespot_enable_discovery: True
+librespot_backend: alsa
+librespot_initial_volume: 100
+librespot_enable_volume_normalisation: True
+librespot_enable_linear_volume: True
+librespot_extra_options: []

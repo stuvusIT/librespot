@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  author: haslersn
+  description: Open source client library for Spotify; see https://github.com/librespot-org/librespot
+  company: stuvus (https://stuvus.uni-stuttgart.de)
+
+  license: MIT
+
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+
+  galaxy_tags:
+    - librespot
+    - spotify
+    - connect
+    - audio
+
+dependencies: []

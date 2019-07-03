@@ -1,0 +1,68 @@
+# {{ ansible_managed }}
+[Unit]
+Description=librespot
+After=network.target sound.target
+
+[Service]
+Restart=always
+RestartSec=10
+User={{ librespot_user }}
+ExecStart=/usr/local/bin/librespot
+{%- if librespot_enable_cache %}
+ --cache "{{ librespot_cache_directory }}"
+{%- else %}
+ --disable-audio-cache
+{%- endif %}
+ --name {{ librespot_name }}
+{%- if librespot_device_type is defined %}
+ --device-type "{{ librespot_device_type }}"
+{%- endif %}
+ --bitrate {{ librespot_bitrate }}
+{%- if librespot_on_event is defined %}
+ --on-event "{{ librespot_on_event }}"
+{%- endif %}
+{%- if librespot_verbose %}
+ --verbose
+{%- endif %}
+{%- if librespot_username is defined %}
+ --username "{{ librespot_username }}"
+{%- endif %}
+{%- if librespot_password is defined %}
+ --password "{{ librespot_password }}"
+{%- endif %}
+{%- if librespot_proxy is defined %}
+ --proxy "{{ librespot_proxy }}"
+{%- endif %}
+{%- if librespot_ap_port is defined %}
+ --ap-port "{{ librespot_ap_port }}"
+{%- endif %}
+{%- if not librespot_enable_discovery %}
+ --disable-discovery
+{%- endif %}
+ --backend "{{ librespot_backend }}"
+{%- if librespot_device is defined %}
+ --device "{{ librespot_device }}"
+{%- endif %}
+{%- if librespot_mixer is defined %}
+ --mixer "{{ librespot_mixer }}"
+{%- endif %}
+ --initial-volume "{{ librespot_initial_volume }}"
+{%- if librespot_zeroconf_port is defined %}
+ --zeroconf-port "{{ librespot_zeroconf_port }}"
+{%- endif %}
+{%- if librespot_enable_volume_normalisation %}
+ --enable-volume-normalisation
+    {%- if librespot_normalisation_pregain is defined %}
+ --normalisation-pregain "{{ librespot_normalisation_pregain }}"
+    {%- endif %}
+{%- endif %}
+{%- if librespot_enable_linear_volume %}
+ --linear-volume
+{%- endif %}
+{%- for option in librespot_extra_options %}
+ {{ option }}
+{%- endfor %}
+
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,48 @@
+---
+# This is included in deploy.yml only if {{ librespot_binary_url }} is not defined
+
+- name: Install build dependencies
+  apt:
+    name:
+      - libpulse-dev
+
+- name: Install toolchain
+  shell: curl https://sh.rustup.rs -sSf | sh -s -- -y
+  args:
+    warn: False
+
+- name: Download librespot archive
+  get_url:
+    url: "{{ librespot_archive_url | default('https://github.com/' + librespot_github_repo + '/archive/' + librespot_version + '.tar.gz') }}"
+    dest: "{{ global_cache_dir }}/librespot-{{ librespot_version }}.tar.gz"
+    checksum: "{{ librespot_checksum }}"
+  become: False
+  delegate_to: localhost
+
+- name: Clear unarchive target directory
+  file:
+    path: /tmp/librespot-{{ librespot_version }}
+    state: absent
+
+- name: Unpack librespot archive
+  unarchive:
+    src: "{{ global_cache_dir }}/librespot-{{ librespot_version }}.tar.gz"
+    dest: /tmp
+
+- name: Compile librespot
+  shell: $HOME/.cargo/bin/cargo build --release --features pulseaudio-backend --no-default-features
+  args:
+    chdir: /tmp/librespot-{{ librespot_version }}
+
+- name: Create deployment target directory
+  file:
+    path: /opt/librespot-{{ librespot_version }}/bin
+    state: directory
+
+- name: Deploy librespot executable
+  copy:
+    remote_src: True
+    src: /tmp/librespot-{{ librespot_version }}/target/release/librespot
+    dest: /opt/librespot-{{ librespot_version }}/bin/librespot
+    mode: 0755
+  notify: Restart librespot service

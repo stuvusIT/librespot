@@ -1,0 +1,16 @@
+---
+- name: Create librespot target directory
+  file:
+    path: /opt/librespot-{{ librespot_version }}/bin
+    state: directory
+
+- name: Download precompiled binary for librespot
+  get_url:
+    url: "{{ librespot_binary_url }}"
+    dest: /opt/librespot-{{ librespot_version }}/bin/librespot
+    checksum: "{{ librespot_checksum }}"
+    mode: 0755
+  when: librespot_binary_url is defined
+
+- include_tasks: build.yml
+  when: librespot_binary_url is not defined

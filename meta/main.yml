@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: haslersn
-  description: Role for https://github.com/librespot-org/librespot
+  description: Open source client library for Spotify; see https://github.com/librespot-org/librespot
   company: stuvus (https://stuvus.uni-stuttgart.de)
 
   license: MIT

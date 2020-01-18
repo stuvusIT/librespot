@@ -14,3 +14,11 @@
   notify:
     - Reload systemd configuration
     - Restart librespot service
+
+- meta: flush_handlers
+
+- name: Enable librespot service
+  service:
+    name: librespot
+    enabled: True
+    state: started

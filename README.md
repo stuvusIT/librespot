@@ -72,7 +72,7 @@ is considered.
   The downloaded archive must contain a folder named `librespot-{{ librespot_version }}` which
   contains in turn the source that can be compiled with `cargo build`.
   The compilation yields a binary named `librespot` which is then installed.
-* `librespot_github_repo`: 
+* `librespot_github_repo`:
   Short form for
   `librespot_archive_url: https://github.com/{{ librespot_github_repo }}/archive/{{ librespot_version }}.tar.gz`.
 

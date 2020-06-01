@@ -4,6 +4,7 @@
 - name: Install build dependencies
   apt:
     name:
+      - build-essential
       - libpulse-dev
 
 - name: Install toolchain
@@ -30,7 +31,8 @@
     dest: /tmp
 
 - name: Compile librespot
-  shell: $HOME/.cargo/bin/cargo build --release --features pulseaudio-backend --no-default-features
+  # See https://github.com/rust-lang/rust/issues/62896 for why `RUSTFLAGS='-Ccodegen-units=1'` is necessary.
+  shell: RUSTFLAGS='-Ccodegen-units=1' $HOME/.cargo/bin/cargo build --release --features pulseaudio-backend --no-default-features
   args:
     chdir: /tmp/librespot-{{ librespot_version }}
 

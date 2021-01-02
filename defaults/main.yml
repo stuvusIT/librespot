@@ -6,15 +6,12 @@ librespot_compile_dir: /tmp
 
 librespot_user: librespot
 
-librespot_enable_cache: False
+librespot_enable_cache: True
 librespot_cache_directory: /var/cache/librespot
 librespot_name: librespot
 librespot_bitrate: 160
 librespot_verbose: False
 librespot_enable_discovery: True
 librespot_backend: alsa
-librespot_initial_volume: 100
 librespot_enable_volume_normalisation: True
-librespot_enable_linear_volume: True
 librespot_extra_options: []
-

@@ -46,7 +46,9 @@ ExecStart=/usr/local/bin/librespot
 {%- if librespot_mixer is defined %}
  --mixer "{{ librespot_mixer }}"
 {%- endif %}
+{%- if librespot_initial_volume is defined %}
  --initial-volume "{{ librespot_initial_volume }}"
+{%- endif %}
 {%- if librespot_zeroconf_port is defined %}
  --zeroconf-port "{{ librespot_zeroconf_port }}"
 {%- endif %}
@@ -56,8 +58,8 @@ ExecStart=/usr/local/bin/librespot
  --normalisation-pregain "{{ librespot_normalisation_pregain }}"
     {%- endif %}
 {%- endif %}
-{%- if librespot_enable_linear_volume %}
- --linear-volume
+{%- if librespot_volume_ctrl is defined %}
+ --volume-ctrl "{{ librespot_volume_ctrl }}"
 {%- endif %}
 {%- for option in librespot_extra_options %}
  {{ option }}

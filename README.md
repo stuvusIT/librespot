@@ -34,16 +34,16 @@ The following role variables configure
 | Name                                  | Default              | Description                                                 |
 | :------------------------------------ | :------------------- | :---------------------------------------------------------- |
 | global_cache_dir                      | _undefined_          | **[Must be set]** Local directory to store temporary files  |
-| librespot_enable_cache                | False                | Whether to pass `--cache "{{ librespot_cache_directory }}"` |
+| librespot_enable_cache                | True                 | Whether to pass `--cache "{{ librespot_cache_directory }}"` |
 | librespot_verbose                     | False                | Whether to pass `--verbose`                                 |
 | librespot_enable_volume_normalisation | True                 | Whether to pass `--enable-volume-normalisation`             |
-| librespot_enable_linear_volume        | True                 | Whether to pass `--linear-volume`                           |
+| librespot_volume_ctrl                 | _undefined_          | If defined, argument passed to `--volume-ctrl`              |
 | librespot_enable_discovery            | True                 | Whether **not** to pass `--disable-discovery`               |
 | librespot_bitrate                     | 160                  | Argument passed to `--bitrate`                              |
 | librespot_name                        | librespot            | Argument passed to `--name`                                 |
 | librespot_cache_directory             | /var/cache/librespot | Argument passed to `--cache`                                |
 | librespot_backend                     | alsa                 | Argument passed to `--backend`                              |
-| librespot_initial_volume              | 100                  | Argument passed to `--initial-volume`                       |
+| librespot_initial_volume              | _undefined_          | If defined, argument passed to `--initial-volume`           |
 | librespot_on_event                    | _undefined_          | If defined, argument passed to `--on-event`                 |
 | librespot_username                    | _undefined_          | If defined, argument passed to `--username`                 |
 | librespot_password                    | _undefined_          | If defined, argument passed to `--password`                 |

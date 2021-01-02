@@ -24,6 +24,7 @@ variable accordingly, and then reapply this role.
 | librespot_checksum    | sha256:b8e99ac4bda359c0215eb6f666c1fe1520075d9b5557d39b889f595b5f07e45a | Checksum of the downloaded archive or binary      |
 | librespot_version     | e8ec5feb2260e9d2e3b8bfc927cc5211d626e015                                | See [source specification](#source-specification) |
 | librespot_user        | librespot                                                               | The user that runs librespot.                     |
+| librespot_compile_dir | /tmp                                                                    | The base directory to use for compiling           |
 
 ## Role Variables Configuring Flags and Options
 

@@ -2,6 +2,7 @@
 librespot_github_repo: librespot-org/librespot
 librespot_checksum: sha256:1117aed485496d2d351f3ca8d84198565667d7627a92f8173405096a5a2dab4f
 librespot_version: 1b1c22b6bc1e330fef731f5b3bc3b130d52a5bff
+librespot_compile_dir: /tmp
 
 librespot_user: librespot
 
@@ -16,3 +17,4 @@ librespot_initial_volume: 100
 librespot_enable_volume_normalisation: True
 librespot_enable_linear_volume: True
 librespot_extra_options: []
+

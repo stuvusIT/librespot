@@ -5,6 +5,7 @@
   file:
     path: "{{ librespot_cache_directory }}"
     state: directory
+    owner: "{{ librespot_user }}"
   when: librespot_enable_cache
 
 - name: Create librespot service
